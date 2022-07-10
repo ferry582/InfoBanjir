@@ -90,24 +90,10 @@ include "koneksi.php";
       </h2>
       <iframe style="height:550px; width:100%; border: none;" src="https://databoks.katadata.co.id/datapublishembed/116995/intensitas-bencana-banjir-di-indonesia-selama-10-tahun-terakhir"></iframe>
 
-
       <!-- peta -->
       <h2 style="text-align: center; margin-top: 50px; margin-bottom: 30px">Peta Daerah Berpotensi Banjir</h2>
       <iframe src="map/map_potensi_banjir.html" frameborder="0"></iframe>
       <br>
-      <!-- <h2 style="text-align: center; margin-top: 50px; margin-bottom: 30px">Peta Bahaya Banjir di Indonesia</h2>
-      <iframe src="map/banjir-bahaya.html" frameborder="0"></iframe>
-      <br>
-      <h2 style="text-align: center; margin-top: 50px; margin-bottom: 30px">Peta Kerentanan Banjir di Indonesia</h2>
-      <iframe src="map/banjir-kerentanan.html" frameborder="0"></iframe>
-      <br>
-      <h2 style="text-align: center; margin-top: 50px; margin-bottom: 30px">Peta Risiko Banjir di Indonesia</h2>
-      <iframe src="map/banjir-risiko.html" frameborder="0"></iframe>
-      <br>
-      <h2 style="text-align: center; margin-top: 50px; margin-bottom: 30px">Peta Kapasitas di Indonesia</h2>
-      <iframe src="map/kapasitas.html" frameborder="0"></iframe>
-      <br> -->
-    </main>
   </section>
   <!-- CONTENT -->
 
