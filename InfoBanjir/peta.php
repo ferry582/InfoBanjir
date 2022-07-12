@@ -14,7 +14,7 @@ include "koneksi.php";
 include "inputPeta.php";
 
 // Sesuaikan dengan konfigurasi koneksi Anda
-// Pengambilan data dari database MySQL (tidak dipakai)
+// Pengambilan data dari database MySQL
 $query1 = "SELECT * FROM locations where location_status = 1  ";
 $query2 = "SELECT COUNT(*) as total FROM locations where location_status = 1";
 
@@ -22,6 +22,14 @@ $select_banyak = mysqli_query($connect, $query2) or die(mysqli_error($connect));
 if (mysqli_num_rows($select_banyak) > 0) {
   while ($row = mysqli_fetch_array($select_banyak)) {
     $total = $row["total"];
+  }
+}
+
+$query3 = "SELECT COUNT(*) as totalUser FROM users";
+$banyak_user = mysqli_query($connect, $query3) or die(mysqli_error($connect));
+if (mysqli_num_rows($banyak_user) > 0) {
+  while ($row = mysqli_fetch_array($banyak_user)) {
+    $totalUser = $row["totalUser"];
   }
 }
 
@@ -44,7 +52,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 
-  <title>AdminHub</title>
+  <title>Pelaporan</title>
 
   <script //src="http://maps.googleapis.com/maps/api/js"></script>
   <script async defer
@@ -162,7 +170,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
       <li>
         <a href="grafik.php">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">Grafik</span>
+          <span class="text">Data Banjir</span>
         </a>
       </li>
       <li>
@@ -189,7 +197,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
     <!-- NAVBAR -->
     <nav>
       <i class='bx bx-menu'></i>
-      <a href="pengguna.php" class="profile" style="padding-left: 90%">
+      <a href="pengguna.php" class="profile" style="padding-left: 92%">
         <i class="fas fa-user"></i>
       </a>
     </nav>
@@ -197,9 +205,28 @@ if (mysqli_num_rows($select_banyak) > 0) {
     <main>
       <div class="head-title">
         <div class="left">
-          <h1>Peta banjir</h1>
+          <h1>Pelaporan Bencana Banjir</h1>
         </div>
       </div>
+
+      <ul class="box-info">
+        <li>
+          <i class='bx bxs-calendar-check'></i>
+          <span class="text">
+            <h3><?php echo $total; ?></h3>
+            <p>Bencana Terkonfirmasi</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-group'></i>
+          <span class="text">
+            <h3><?php echo $totalUser; ?></h3>
+            <p>Pengguna</p>
+          </span>
+        </li>
+      </ul>
+
+      <br><br>
 
       <!-- <iframe src="../kontak/contact-form-06/index.php" frameborder="0"></iframe> -->
       <!-- peta -->
@@ -211,14 +238,14 @@ if (mysqli_num_rows($select_banyak) > 0) {
         if (tambah($_POST, $id) > 0) {
           echo "
         <script>
-          alert('data berhasil ditambahkan!');
+          alert('data berhasil ditambahkan! Silahkan tunggu verifikasi dari admin');
           document.location.href = 'peta.php';
         </script>
       ";
         } else {
           echo "
         <script>
-          alert('data gagal ditambahkan!');
+          alert('Data gagal ditambahkan! Pastikan semua data terisi!');
           document.location.href = 'peta.php';
         </script>
       ";
@@ -235,29 +262,29 @@ if (mysqli_num_rows($select_banyak) > 0) {
 
       <form id="formulir" action="" method="post" enctype="multipart/form-data">
         <div>
-          <label>Latitude</label>
-          <input type="text" id="lat" name="lat" value="">
+          <label><b>Latitude</b> <i>(pilih dari peta)</i></label>
+          <input type="text" id="lat" name="lat" readonly value="">
         </div>
         <div>
-          <label>Longitude</label>
-          <input type="text" id="lng" name="lng" value="">
+          <label><b>Longitude</b> <i>(pilih dari peta)</i></label>
+          <input type="text" id="lng" name="lng" readonly value="">
         </div>
         <div>
-          <label>Lokasi</label>
+          <label><b>Lokasi</b></label>
           <input type="text" id="lng" name="lokasi" value="">
         </div>
         <div class="form-group">
-          <label>Kronologi</label>
+          <label><b>Kronologi</b></label>
           <br>
           <textarea style="height: 200px;" name="kronologi">
           </textarea>
         </div>
         <div class="form-group">
-          <label>Waktu Kejadian</label>
+          <label><b>Waktu Kejadian</b></label>
           <input type="datetime-local" name="waktu">
         </div>
         <div class="form-group">
-          <label for="foto">Foto*</label><br>
+          <label for="foto"><b>Foto*</b></label><br>
           <input type="file" name="foto" id="foto">
         </div>
         <input type="submit" class="btn btn-primary" name="submit" value="Tambah">

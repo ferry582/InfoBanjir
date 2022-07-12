@@ -28,7 +28,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users");
   <!-- font awesome cdn link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <title>AdminHub</title>
+  <title>Pengguna</title>
 </head>
 
 <body>
@@ -53,7 +53,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users");
       <li>
         <a href="grafik.php">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">Grafik</span>
+          <span class="text">Data Banjir</span>
         </a>
       </li>
       <li class="active">
@@ -80,7 +80,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users");
     <!-- NAVBAR -->
     <nav>
       <i class='bx bx-menu'></i>
-      <a href="penggunaAdmin.php" class="profile" style="padding-left: 90%">
+      <a href="penggunaAdmin.php" class="profile" style="padding-left: 92%">
         <i class="fas fa-user"></i>
       </a>
     </nav>
@@ -96,13 +96,9 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users");
 
       <div class="table-data">
         <div class="order">
-          <div class="head">
-            <h3>Pengguna Aktif</h3>
-          </div>
           <table>
             <thead>
               <tr>
-                <th>No</th>
                 <th>Pengguna</th>
                 <th>Email</th>
                 <th>Alamat</th>
@@ -112,20 +108,18 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users");
             </thead>
 
             <tbody>
-              <?php $i = 1 ?>
               <?php foreach ($pengguna as $user) : ?>
-              <tr>
-                <td> <?php echo ($i); ?> </td>
-                <td>
-                  <p> <?= $user["nama"] ?> </p>
-                </td>
-                <td><?= $user["email"] ?></td>
-                <td><?= $user["alamat"] ?></td>
-                <td><?= $user["nik"] ?></td>
-                <td><a href="hapusData.php?id=<?= $user["userid"] ?>"><button
-                      style="background-color: red; padding:4px; border:none;">Hapus</button></a></td>
-              </tr>
-              <?php $i++; ?>
+                <tr>
+                  <td>
+                    <p> <?= $user["nama"] ?> </p>
+                  </td>
+                  <td><?= $user["email"] ?></td>
+                  <td><?= $user["alamat"] ?></td>
+                  <td><?= $user["nik"] ?></td>
+                  <td><a href="hapusData.php?id=<?= $user["userid"] ?>"><button style="background-color:red;
+    color: #fff; border:none; padding-left:10px; padding-right:10px; padding-top:7px; padding-bottom:7px;
+    border-radius:15px;">X</button></a></td>
+                </tr>
               <?php endforeach; ?>
             </tbody>
           </table>

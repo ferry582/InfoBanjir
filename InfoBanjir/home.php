@@ -25,7 +25,7 @@ include "koneksi.php";
   <!-- font awesome cdn link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <title>AdminHub</title>
+  <title>Beranda</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@ include "koneksi.php";
       <li>
         <a href="grafik.php">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">Grafik</span>
+          <span class="text">Data Banjir</span>
         </a>
       </li>
       <li>
@@ -77,7 +77,7 @@ include "koneksi.php";
     <!-- NAVBAR -->
     <nav>
       <i class='bx bx-menu'></i>
-      <a href="pengguna.php" class="profile" style="padding-left: 90%">
+      <a href="pengguna.php" class="profile" style="padding-left: 92%">
         <i class="fas fa-user"></i>
       </a>
     </nav>

@@ -33,7 +33,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
   <!-- font awesome cdn link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <title>AdminHub</title>
+  <title>Pengguna</title>
 </head>
 
 <body>
@@ -58,7 +58,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
       <li>
         <a href="grafik.php">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">Grafik</span>
+          <span class="text">Data Banjir</span>
         </a>
       </li>
       <li class="active">
@@ -85,7 +85,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
     <!-- NAVBAR -->
     <nav>
       <i class='bx bx-menu'></i>
-      <a href="#" class="profile" style="padding-left: 90%">
+      <a href="#" class="profile" style="padding-left: 92%">
         <i class="fas fa-user"></i>
       </a>
     </nav>
@@ -93,7 +93,7 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
     <main>
       <div class="head-title">
         <div class="left">
-          <h1>Pengguna</h1>
+          <h1>Profil Pengguna</h1>
         </div>
       </div>
 
@@ -102,12 +102,10 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
       <div class="table-data">
         <div class="order">
           <div class="head">
-            <h3>Profil Pengguna</h3>
           </div>
           <table>
             <thead>
               <tr>
-                <th>No</th>
                 <th>Pengguna</th>
                 <th>Email</th>
                 <th>Alamat</th>
@@ -116,10 +114,8 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
             </thead>
 
             <tbody>
-              <?php $i = 1 ?>
               <?php foreach ($pengguna as $user) : ?>
               <tr>
-                <td> <?php echo ($i); ?> </td>
                 <td>
                   <p> <?= $user["nama"] ?> </p>
                 </td>
@@ -127,7 +123,6 @@ $pengguna = mysqli_query($connect, "SELECT * FROM users WHERE userid = $id");
                 <td><?= $user["alamat"] ?></td>
                 <td><?= $user["nik"] ?></td>
               </tr>
-              <?php $i++; ?>
               <?php endforeach; ?>
             </tbody>
           </table>

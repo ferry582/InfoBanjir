@@ -23,11 +23,17 @@
 <script src="leaflet.ajax.js"></script>
 
 <script type="text/javascript">
-    var map = L.map('map').setView([-2.996811, 120.232066], 5);
+    var map = L.map('map').setView([-2.996811, 120.232066], 4);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
     }).addTo(map);
+
+    var myStyle = {
+    "color": "#3488fc",
+    "weight": 1,
+    "opacity": 0.80
+    };
 
     function popUp(f,l){
     var out = [];
@@ -38,7 +44,11 @@
         l.bindPopup(out.join("<br />"));
     }
 }
-var jsonTest = new L.GeoJSON.AJAX(["potensi_banjir_lampung_22122021.geojson"],{onEachFeature:popUp}).addTo(map);
+
+var jsonTest1 = new L.GeoJSON.AJAX(["data/potensi_banjir_papua_09012022.geojson"],{onEachFeature:popUp, style: myStyle}).addTo(map);
+var jsonTest2 = new L.GeoJSON.AJAX(["data/potensi_banjir_sumut_19122021.geojson"],{onEachFeature:popUp, style: myStyle}).addTo(map);
+var jsonTest3 = new L.GeoJSON.AJAX(["data/potensi_banjir_jawa_05122021.geojson"],{onEachFeature:popUp, style: myStyle}).addTo(map);
+var jsonTest4 = new L.GeoJSON.AJAX(["data/potensi_banjir_kalteng_26102021.geojson"],{onEachFeature:popUp, style: myStyle}).addTo(map);
 
 </script>
 

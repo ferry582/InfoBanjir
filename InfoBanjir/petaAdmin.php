@@ -12,7 +12,7 @@ include "koneksi.php";
 
 <?php
 // Sesuaikan dengan konfigurasi koneksi Anda
-// Pengambilan data dari database MySQL (tidak dipakai)
+// Pengambilan data dari database MySQL
 $query1 = "SELECT * FROM locations where location_status = 1  ";
 $query2 = "SELECT COUNT(*) as total FROM locations where location_status = 1";
 
@@ -20,6 +20,14 @@ $select_banyak = mysqli_query($connect, $query2) or die(mysqli_error($connect));
 if (mysqli_num_rows($select_banyak) > 0) {
   while ($row = mysqli_fetch_array($select_banyak)) {
     $total = $row["total"];
+  }
+}
+
+$query3 = "SELECT COUNT(*) as totalUser FROM users";
+$banyak_user = mysqli_query($connect, $query3) or die(mysqli_error($connect));
+if (mysqli_num_rows($banyak_user) > 0) {
+  while ($row = mysqli_fetch_array($banyak_user)) {
+    $totalUser = $row["totalUser"];
   }
 }
 
@@ -61,7 +69,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
   <!-- font awesome cdn link  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-  <title>AdminHub</title>
+  <title>Pelaporan</title>
 
   <script //src="http://maps.googleapis.com/maps/api/js"></script>
   <script async defer
@@ -158,7 +166,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
       <li>
         <a href="grafik.php">
           <i class='bx bxs-message-dots'></i>
-          <span class="text">Grafik</span>
+          <span class="text">Data Banjir</span>
         </a>
       </li>
       <li>
@@ -185,7 +193,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
     <!-- NAVBAR -->
     <nav>
       <i class='bx bx-menu'></i>
-      <a href="pengguna.php" class="profile" style="padding-left: 90%">
+      <a href="pengguna.php" class="profile" style="padding-left: 92%">
         <i class="fas fa-user"></i>
       </a>
     </nav>
@@ -193,9 +201,30 @@ if (mysqli_num_rows($select_banyak) > 0) {
     <main>
       <div class="head-title">
         <div class="left">
-          <h1>Peta banjir</h1>
+          <h1>Pelaporan Bencana Banjir</h1>
         </div>
       </div>
+
+      <ul class="box-info">
+        <li>
+          <i class='bx bxs-calendar-check'></i>
+          <span class="text">
+            <h3><?php echo $total; ?></h3>
+            <p>Bencana Terkonfirmasi</p>
+          </span>
+        </li>
+        <li>
+          <i class='bx bxs-group'></i>
+          <span class="text">
+            <h3><?php echo $totalUser; ?></h3>
+            <p>Pengguna</p>
+          </span>
+        </li>
+      </ul>
+
+      <br><br>
+
+      <h3>Peta Bencana Banjir</h3><br>
       <!-- tampilin maps -->
       <div id="googleMap" style="width:100%;height:380px;"></div>
 
@@ -215,12 +244,8 @@ if (mysqli_num_rows($select_banyak) > 0) {
           <div style="height: 600px;" class="container-fluid">
             <div class="row">
               <div class="col-lg-12">
-                <main>
+                  <br><br><h3>Data Laporan Belum Terkonfirmasi</h3><br>
                   <table class="tabel-baru">
-
-                    <div class="head">
-                      Semua Laporan
-                    </div>
                     <tr>
                       <th>No</th>
                       <th>userid</th>
@@ -268,7 +293,7 @@ if (mysqli_num_rows($select_banyak) > 0) {
                       ?>
 
                   </table>
-                </main>
+
                 <?php
 
                 // delete data

@@ -59,12 +59,17 @@ function tambah($data, $id)
     $lokasi = htmlspecialchars($data["lokasi"]);
     // $gambar = htmlspecialchars($data["gambar"]);
 
+    //cek apakah form kosong
+    if($lat == null || $lng == null || $kronologi == null || $waktu == null || $lokasi == null) {
+        return false;
+    }
+
     // upload gambar 
     $foto = upload();
     if (!$foto) {
         return false;
     }
-
+    
     // query insert data 
     $query = "INSERT INTO locations VALUES 
   ('','$userid','$lat','$lng','$kronologi','','$waktu','$lokasi','$foto')
